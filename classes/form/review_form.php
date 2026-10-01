@@ -35,7 +35,9 @@ require_once($CFG->libdir . '/formslib.php');
  * Select one item or the whole course.
  */
 class review_form extends moodleform {
-    /** Define form controls. */
+    /**
+     * Define form controls.
+     */
     protected function definition(): void {
         $mform = $this->_form;
         $courseid = (int)$this->_customdata['courseid'];
