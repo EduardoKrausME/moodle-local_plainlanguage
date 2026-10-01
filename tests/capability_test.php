@@ -28,6 +28,8 @@ use advanced_testcase;
 
 /**
  * Validate plugin capability registration.
+ *
+ * @coversNothing
  */
 final class capability_test extends advanced_testcase {
     /**
