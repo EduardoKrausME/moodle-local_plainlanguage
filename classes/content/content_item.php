@@ -30,6 +30,21 @@ use context;
  * Immutable content item.
  */
 class content_item {
+    /** @var string Stable key used only inside this plugin. */
+    public readonly string $key;
+    /** @var string Supported source type. */
+    public readonly string $type;
+    /** @var string Human-readable title. */
+    public readonly string $title;
+    /** @var string Teacher-authored source HTML/text. */
+    public readonly string $html;
+    /** @var int Moodle text format. */
+    public readonly int $format;
+    /** @var int Context used to format the content. */
+    public readonly int $contextid;
+    /** @var int Course id. */
+    public readonly int $courseid;
+
     /**
      * Constructor.
      *
@@ -42,14 +57,21 @@ class content_item {
      * @param int $courseid Course id.
      */
     public function __construct(
-        public readonly string $key,
-        public readonly string $type,
-        public readonly string $title,
-        public readonly string $html,
-        public readonly int $format,
-        public readonly int $contextid,
-        public readonly int $courseid,
+        string $key,
+        string $type,
+        string $title,
+        string $html,
+        int $format,
+        int $contextid,
+        int $courseid
     ) {
+        $this->key = $key;
+        $this->type = $type;
+        $this->title = $title;
+        $this->html = $html;
+        $this->format = $format;
+        $this->contextid = $contextid;
+        $this->courseid = $courseid;
     }
 
     /**
