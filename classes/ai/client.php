@@ -44,7 +44,9 @@ class client {
     /** @var cache Moodle cache instance. */
     private cache $cache;
 
-    /** Constructor. */
+    /**
+     * Initialise the review cache.
+     */
     public function __construct() {
         $this->cache = cache::make('local_plainlanguage', 'reviews');
     }
