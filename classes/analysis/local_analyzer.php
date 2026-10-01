@@ -244,7 +244,7 @@ class local_analyzer {
      * @return string[]
      */
     private function sentences(string $text): array {
-        $parts = preg_split('/(?<=[.!?])(?:[\s\R]+)|\R{2,}/u', trim($text), -1, PREG_SPLIT_NO_EMPTY);
+        $parts = preg_split('/(?<=[.!?])\\s+|\\R{2,}/u', trim($text), -1, PREG_SPLIT_NO_EMPTY);
         if (!$parts && trim($text) !== '') {
             return [trim($text)];
         }
