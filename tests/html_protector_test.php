@@ -35,8 +35,8 @@ use moodle_exception;
  */
 final class html_protector_test extends advanced_testcase {
     /**
-    * Tokens must restore exact tags, attributes, URLs and placeholders.
-    */
+     * Tokens must restore exact tags, attributes, URLs and placeholders.
+     */
     public function test_preserves_html_and_placeholders(): void {
         $html = '<p>Read <a href="@@PLUGINFILE@@/guide.pdf" class="btn">this guide</a> {{name}}.</p>';
         $protected = html_protector::protect($html);
@@ -51,8 +51,8 @@ final class html_protector_test extends advanced_testcase {
     }
 
     /**
-    * Missing a protected token invalidates the AI rewrite.
-    */
+     * Missing a protected token invalidates the AI rewrite.
+     */
     public function test_rejects_missing_token(): void {
         $protected = html_protector::protect('<p>Hello <strong>world</strong></p>');
         $rewritten = str_replace($protected['sequence'][1], '', $protected['content']);
@@ -61,8 +61,8 @@ final class html_protector_test extends advanced_testcase {
     }
 
     /**
-    * New model-generated HTML is rejected.
-    */
+     * New model-generated HTML is rejected.
+     */
     public function test_rejects_new_markup(): void {
         $protected = html_protector::protect('<p>Hello</p>');
         $rewritten = '<script>alert(1)</script>' . $protected['content'];

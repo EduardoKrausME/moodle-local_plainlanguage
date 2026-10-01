@@ -31,8 +31,8 @@ use advanced_testcase;
  */
 final class capability_test extends advanced_testcase {
     /**
-    * Capability is course-scoped and read-only in intent.
-    */
+     * Capability is course-scoped and read-only in intent.
+     */
     public function test_review_capability_definition(): void {
         $capability = get_capability_info('local/plainlanguage:review');
         $this->assertNotFalse($capability);

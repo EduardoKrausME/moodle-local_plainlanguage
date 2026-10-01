@@ -35,8 +35,8 @@ use moodle_exception;
  */
 final class extractor_test extends advanced_testcase {
     /**
-    * Extract Page, Book, Assignment, Forum, Section and Label/Text content.
-    */
+     * Extract Page, Book, Assignment, Forum, Section and Label/Text content.
+     */
     public function test_extracts_supported_content(): void {
         global $DB;
         $this->resetAfterTest();
@@ -98,8 +98,8 @@ final class extractor_test extends advanced_testcase {
     }
 
     /**
-    * Invalid opaque keys are rejected before any record lookup.
-    */
+     * Invalid opaque keys are rejected before any record lookup.
+     */
     public function test_rejects_invalid_key(): void {
         $this->resetAfterTest();
         $course = $this->getDataGenerator()->create_course();
