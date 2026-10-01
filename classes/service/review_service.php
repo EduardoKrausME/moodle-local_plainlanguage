@@ -40,7 +40,9 @@ class review_service {
     /** @var client */
     private client $client;
 
-    /** Constructor. */
+    /**
+     * Initialise review dependencies.
+     */
     public function __construct() {
         $this->analyzer = new local_analyzer();
         $this->client = new client();
