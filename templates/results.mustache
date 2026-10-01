@@ -1,0 +1,114 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_plainlanguage/results
+
+    Example context (json):
+    {
+        Aqui tem que criar o context em inglês
+    }
+}}
+{{!
+    Plain-language review results.
+}}
+{{#results}}
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div>
+                <strong>{{title}}</strong>
+                <span class="text-muted ms-2">{{type}}</span>
+            </div>
+            {{#cached}}<span class="badge bg-secondary">{{#str}}cached, local_plainlanguage{{/str}}</span>{{/cached}}
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6 mb-3 mb-lg-0">
+                    <h4 class="h5">{{#str}}original, local_plainlanguage{{/str}}</h4>
+                    <div class="border rounded p-3 bg-light">{{{originalhtml}}}</div>
+
+                    <h5 class="mt-4">{{#str}}metrics, local_plainlanguage{{/str}}</h5>
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <tbody>
+                            {{#metrics}}
+                                <tr>
+                                    <th scope="row">{{label}}</th>
+                                    <td>{{value}}</td>
+                                </tr>
+                            {{/metrics}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="small text-muted">{{#str}}metricsnote, local_plainlanguage{{/str}}</p>
+                </div>
+
+                <div class="col-lg-6">
+                    <h4 class="h5">{{#str}}findings, local_plainlanguage{{/str}}</h4>
+
+                    <h5 class="h6 mt-3">{{#str}}localchecks, local_plainlanguage{{/str}}</h5>
+                    {{^haslocalfindings}}
+                        <p class="text-muted">{{#str}}nofindings, local_plainlanguage{{/str}}</p>
+                    {{/haslocalfindings}}
+                    {{#localfindings}}
+                        <div class="border rounded p-3 mb-3">
+                            <span class="badge bg-secondary mb-2">{{category}}</span>
+                            {{#hasexcerpt}}
+                                <p><strong>{{#str}}excerpt, local_plainlanguage{{/str}}:</strong> “{{excerpt}}”
+                                </p>{{/hasexcerpt}}
+                            <p><strong>{{#str}}problem, local_plainlanguage{{/str}}:</strong> {{problem}}</p>
+                            <p><strong>{{#str}}whyconfusing, local_plainlanguage{{/str}}:</strong> {{why}}</p>
+                            <p class="mb-0"><strong>{{#str}}
+                                suggestion, local_plainlanguage{{/str}}:</strong> {{suggestion}}</p>
+                        </div>
+                    {{/localfindings}}
+
+                    <h5 class="h6 mt-4">{{#str}}semanticchecks, local_plainlanguage{{/str}}</h5>
+                    {{#hasaierror}}
+                        <div class="alert alert-warning">{{aierror}}</div>
+                    {{/hasaierror}}
+                    {{#hasaisummary}}
+                        <p><strong>{{#str}}summary, local_plainlanguage{{/str}}:</strong> {{aisummary}}</p>
+                    {{/hasaisummary}}
+                    {{^hasaifindings}}
+                        {{^hasaierror}}
+                            <p class="text-muted">{{#str}}nofindings, local_plainlanguage{{/str}}</p>{{/hasaierror}}
+                    {{/hasaifindings}}
+                    {{#aifindings}}
+                        <div class="border rounded p-3 mb-3">
+                            <span class="badge bg-info text-dark mb-2">{{category}}</span>
+                            {{#hasexcerpt}}
+                                <p><strong>{{#str}}excerpt, local_plainlanguage{{/str}}:</strong> “{{excerpt}}”
+                                </p>{{/hasexcerpt}}
+                            <p><strong>{{#str}}problem, local_plainlanguage{{/str}}:</strong> {{problem}}</p>
+                            <p><strong>{{#str}}whyconfusing, local_plainlanguage{{/str}}:</strong> {{why}}</p>
+                            <p class="mb-0"><strong>{{#str}}
+                                suggestion, local_plainlanguage{{/str}}:</strong> {{suggestion}}</p>
+                        </div>
+                    {{/aifindings}}
+
+                    <form method="post" action="{{rewriteurl}}" class="mt-3">
+                        <input type="hidden" name="courseid" value="{{courseid}}">
+                        <input type="hidden" name="itemkey" value="{{key}}">
+                        <input type="hidden" name="sesskey" value="{{sesskey}}">
+                        <button type="submit" class="btn btn-secondary">{{#str}}
+                            suggestrerewrite, local_plainlanguage{{/str}}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/results}}

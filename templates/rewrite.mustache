@@ -1,0 +1,63 @@
+{{!
+    This file is part of Moodle - https://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_plainlanguage/rewrite
+
+    Example context (json):
+    {
+        Aqui tem que criar o context em inglês
+    }
+}}
+{{!
+    Side-by-side rewrite suggestion. No save action is intentionally provided.
+}}
+<div class="alert alert-info">{{#str}}rewritenote, local_plainlanguage{{/str}}</div>
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <div><strong>{{title}}</strong> <span class="text-muted ms-2">{{type}}</span></div>
+        {{#cached}}<span class="badge bg-secondary">{{#str}}cached, local_plainlanguage{{/str}}</span>{{/cached}}
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-6 mb-3 mb-lg-0">
+                <h3 class="h5">{{#str}}original, local_plainlanguage{{/str}}</h3>
+                <div class="border rounded p-3 bg-light">{{{originalhtml}}}</div>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="h5">{{#str}}rewritten, local_plainlanguage{{/str}}</h3>
+                <div class="border rounded p-3">{{{rewrittenhtml}}}</div>
+            </div>
+        </div>
+
+        {{#hasnotes}}
+            <div class="mt-4">
+                <h4 class="h6">{{#str}}summary, local_plainlanguage{{/str}}</h4>
+                <ul>
+                    {{#notes}}
+                        <li>{{text}}</li>{{/notes}}
+                </ul>
+            </div>
+        {{/hasnotes}}
+
+        <div class="mt-4">
+            <label for="plainlanguage-rewritten-source" class="form-label">{{#str}}
+                copysource, local_plainlanguage{{/str}}</label>
+            <textarea id="plainlanguage-rewritten-source" class="form-control" rows="12"
+                      readonly>{{rewrittensource}}</textarea>
+        </div>
+    </div>
+</div>
