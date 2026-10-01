@@ -36,12 +36,16 @@ class extractor {
     /** @var string[] Supported activity module names. */
     private const SUPPORTED_MODULES = ['page', 'book', 'assign', 'forum', 'label'];
 
+    /** @var stdClass Course record. */
+    private readonly stdClass $course;
+
     /**
      * Constructor.
      *
      * @param stdClass $course Course record.
      */
-    public function __construct(private readonly stdClass $course) {
+    public function __construct(stdClass $course) {
+        $this->course = $course;
     }
 
     /**
