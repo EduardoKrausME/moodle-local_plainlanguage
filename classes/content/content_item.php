@@ -46,9 +46,9 @@ class content_item {
         public readonly string $type,
         public readonly string $title,
         public readonly string $html,
-        public readonly int    $format,
-        public readonly int    $contextid,
-        public readonly int    $courseid,
+        public readonly int $format,
+        public readonly int $contextid,
+        public readonly int $courseid,
     ) {
     }
 
