@@ -18,7 +18,7 @@ local/plainlanguage:review
 
 The capability is course-scoped and is granted by default to `editingteacher` and `manager` archetypes.
 
-## Supported teacher-authored content
+## Teacher-authored content analysed
 
 the plugin extracts only course/content fields written by teachers:
 
