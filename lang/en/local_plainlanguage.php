@@ -28,6 +28,7 @@ $string['aicategory'] = 'Semantic finding';
 $string['backtoreview'] = 'Back to review';
 $string['bridgeerror'] = 'The AI review is unavailable for this request. Check the AI Bridge tenant, purpose, route, permissions and credits.';
 $string['cached'] = 'Cached result';
+$string['cachedef_reviews'] = 'Plain language review results';
 $string['category_ambiguity'] = 'Ambiguity';
 $string['category_confusing_implicit_subject'] = 'Confusing implicit subject';
 $string['category_confusing_sequence'] = 'Confusing sequence';
