@@ -34,7 +34,9 @@ use local_plainlanguage\exception\ai_exception;
  * @covers \local_plainlanguage\ai\json_parser
  */
 final class json_parser_test extends advanced_testcase {
-    /** A valid suggestion must preserve the fixed schema. */
+    /**
+    * A valid suggestion must preserve the fixed schema.
+    */
     public function test_parses_suggestions(): void {
         $json = json_encode([
             'summary' => 'Há duas instruções que podem ser mais explícitas.',
@@ -53,13 +55,17 @@ final class json_parser_test extends advanced_testcase {
         $this->assertStringContainsString('momento', $parsed['findings'][0]['suggestion']);
     }
 
-    /** Malformed JSON must not be guessed or partially accepted. */
+    /**
+    * Malformed JSON must not be guessed or partially accepted.
+    */
     public function test_rejects_malformed_json(): void {
         $this->expectException(ai_exception::class);
         json_parser::parse_review('{"summary":"x","findings":[');
     }
 
-    /** Model-controlled display strings are stripped of markup. */
+    /**
+    * Model-controlled display strings are stripped of markup.
+    */
     public function test_sanitizes_model_strings(): void {
         $json = json_encode([
             'summary' => '<script>alert(1)</script><b>Resumo</b>',
@@ -78,7 +84,9 @@ final class json_parser_test extends advanced_testcase {
         $this->assertStringContainsString('Defina o termo', $parsed['findings'][0]['suggestion']);
     }
 
-    /** Unknown categories are schema violations, even when JSON is syntactically valid. */
+    /**
+    * Unknown categories are schema violations, even when JSON is syntactically valid.
+    */
     public function test_rejects_unknown_category(): void {
         $json = json_encode([
             'summary' => 'x',

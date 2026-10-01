@@ -33,7 +33,9 @@ use local_plainlanguage\analysis\local_analyzer;
  * @covers \local_plainlanguage\analysis\local_analyzer
  */
 final class local_analyzer_test extends advanced_testcase {
-    /** Local checks should flag measurable structure/style issues without AI. */
+    /**
+    * Local checks should flag measurable structure/style issues without AI.
+    */
     public function test_detects_local_findings(): void {
         $longsentence = implode(' ', array_fill(0, 35, 'palavra')) . '.';
         $html = '<p>' . $longsentence . '</p>'
@@ -49,7 +51,9 @@ final class local_analyzer_test extends advanced_testcase {
         $this->assertSame(1, $result['metrics']['linkcount']);
     }
 
-    /** Plain text extraction must remove markup but keep block boundaries. */
+    /**
+    * Plain text extraction must remove markup but keep block boundaries.
+    */
     public function test_plain_text_extraction(): void {
         $text = local_analyzer::to_plain_text('<p>Primeiro.</p><p>Segundo <strong>passo</strong>.</p>');
         $this->assertStringNotContainsString('<strong>', $text);
