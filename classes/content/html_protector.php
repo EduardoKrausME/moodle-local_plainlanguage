@@ -58,6 +58,10 @@ class html_protector {
             $protected
         ) ?? $protected;
 
+        usort($sequence, static function (string $left, string $right) use ($protected): int {
+            return strpos($protected, $left) <=> strpos($protected, $right);
+        });
+
         return [
             'content' => $protected,
             'tokens' => $tokens,
