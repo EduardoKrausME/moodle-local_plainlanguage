@@ -8,35 +8,6 @@ meaning-level problems.
 The plugin never saves an AI rewrite automatically. A teacher can request a full rewrite suggestion, compare it side by
 side with the original and copy it manually if useful.
 
-## Requirements
-
-- Moodle 4.5 or later.
-- PHP supported by the target Moodle version. Moodle 4.5 requires PHP 8.1+.
-- `local_ai_bridge` version `2026093001` or later:
-  https://github.com/EduardoKrausME/moodle-local_ai_bridge/
-
-`version.php` declares the dependency explicitly:
-
-```php
-$plugin->dependencies = [
-    'local_ai_bridge' => 2026093001,
-];
-```
-
-There are no API keys, provider endpoints or model settings in this plugin. Every AI request goes exclusively through:
-
-```php
-\local_ai_bridge\api::generate()
-```
-
-using the purpose:
-
-```text
-plainlanguage-review
-```
-
-That purpose must be configured and routed in AI Bridge for the tenant/user performing the review.
-
 ## Capability
 
 The review UI requires:
@@ -49,7 +20,7 @@ The capability is course-scoped and is granted by default to `editingteacher` an
 
 ## Supported teacher-authored content
 
-The first version extracts only course/content fields written by teachers:
+the plugin extracts only course/content fields written by teachers:
 
 - Page content;
 - Book chapters;
@@ -149,45 +120,3 @@ through Moodle developer debugging. Typical causes include:
 - all configured providers failing.
 
 A bridge failure does not discard deterministic findings for the selected item.
-
-## Tests
-
-The PHPUnit suite covers:
-
-- extraction of supported content types;
-- invalid content keys;
-- deterministic analyzer behavior;
-- HTML/tag/URL/placeholder preservation;
-- rejection of missing tokens and injected markup;
-- valid semantic suggestions;
-- malformed AI JSON;
-- model-output sanitization;
-- rejection of schema drift/unknown categories;
-- capability registration.
-
-## CI
-
-`.github/workflows/ci.yml` runs against Moodle 4.5/PHP 8.1 and Moodle 5.2/PHP 8.3 on PostgreSQL and MariaDB. It
-installs `local_ai_bridge` as an extra plugin dependency and runs:
-
-- PHP lint;
-- `EduardoKrausME/moodle-plugin-validate`;
-- Moodle plugin validation;
-- Moodle Code Checker;
-- Mustache lint;
-- PHPUnit.
-
-## Installation
-
-Copy the plugin to:
-
-```text
-local/plainlanguage
-```
-
-Then run the normal Moodle upgrade process. Configure the `plainlanguage-review` purpose/routes in AI Bridge before
-using semantic review.
-
-## License
-
-GNU GPL v3 or later.
