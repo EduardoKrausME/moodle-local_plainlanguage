@@ -8,24 +8,6 @@ meaning-level problems.
 The plugin never saves an AI rewrite automatically. A teacher can request a full rewrite suggestion, compare it side by
 side with the original and copy it manually if useful.
 
-## Installation
-
-Download the versioned `local_plainlanguage_<version>.zip` asset from the
-[latest GitHub release](https://github.com/EduardoKrausME/moodle-local_plainlanguage/releases/latest)
-and upload it in **Site administration > Plugins > Install plugins**. The package has a single
-top-level directory, `plainlanguage/`, as required by Moodle's local-plugin installer.
-
-Do not use GitHub's automatically generated **Source code (zip)** download for Moodle installation:
-GitHub gives that archive a repository/hash directory name, which can trigger
-`rootdirinvalid`. If you need to build an installable ZIP directly from a Git tag, use:
-
-```bash
-git archive --format=zip --prefix=plainlanguage/ -o local_plainlanguage.zip <tag>
-```
-
-For manual deployment, extract the plugin to `local/plainlanguage/`. The plugin also requires
-`local_ai_bridge` as declared in its dependency metadata.
-
 ## Capability
 
 The review UI requires:
